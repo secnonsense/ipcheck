@@ -31,8 +31,8 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--file", help="Use files as input", action="store_true")
     parser.add_argument("-n", "--nomatch", help="Show IP's that don't have a match", action="store_true")
-    parser.add_argument("source", help="Enter an IP to compare or a file with IP's with -f option")
-    parser.add_argument("dest", help="Enter a network to compare to, or a file of networks with the -f option")
+    parser.add_argument("source", help="Enter an IP to compare or a file with IP's using the -f option")
+    parser.add_argument("dest", help="Enter a network to compare to, or a file of networks using the -f option")
     return parser.parse_args()
 
 def main():
