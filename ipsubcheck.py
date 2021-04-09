@@ -25,23 +25,23 @@ def compare_files(file,file2,nomatch=0,f=1):
                             count+=1
                     if match==0 and nomatch==1:
                         print(f"No match for {ip}") 
-    print(f"\nTotal Matches: {count}\n")       
+    print(f"\nTotal Matches: {count}\n")    
 
-def main():
+def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--file", help="Use files as input", action="store_true")
     parser.add_argument("-n", "--nomatch", help="Show IP's that don't have a match", action="store_true")
     parser.add_argument("source", help="Enter an IP to compare or a file with IP's with -f option")
     parser.add_argument("dest", help="Enter a network to compare to, or a file of networks with the -f option")
-    args = parser.parse_args()
+    return parser.parse_args()
 
+def main():
+    args=parse_args()
     if args.file:
         compare_files(args.source,args.dest,args.nomatch)
     else:
         compare_ip(args.source,args.dest,args.nomatch)
 
-
 if __name__ == "__main__":
     main()
-
 
