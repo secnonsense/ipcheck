@@ -5,7 +5,7 @@ Requires netaddr module
 
 Syntax -  
 
-python3 ipsubcheck.py <options> <source file> <dest file>   
+python3 ipsubcheck.py \<options\> \<source file\> \<dest file\>   
 
 Options:  
 "-f", "--file" - "Use files as input"  
