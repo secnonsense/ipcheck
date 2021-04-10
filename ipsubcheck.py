@@ -1,10 +1,13 @@
 from netaddr import IPNetwork, IPAddress
 import argparse
 
-def compare_ip(ip,network,nomatch=0,f=0):
+def compare_ip(ip,network,nomatch=0,i=0,f=0):
     if "/" in ip:
         if IPNetwork(ip) in IPNetwork(network):
-            print(f"IP {ip} matches {network}")
+            if i==1:
+                print(ip)
+            else:
+                print(f"{ip} matches {network}")
             toggle=1
             if f==1:
                 return toggle
@@ -12,14 +15,17 @@ def compare_ip(ip,network,nomatch=0,f=0):
             print(f"No match for {ip}")
     else:
         if IPAddress(ip) in IPNetwork(network):
-            print(f"IP {ip} matches {network}")
+            if i==1:
+                print(ip)
+            else:
+                print(f"{ip} matches {network}")
             toggle=1
             if f==1:
                 return toggle
         elif nomatch==1 and f==0:
             print(f"No match for {ip}")
 
-def compare_files(file,file2,nomatch=0,f=1):
+def compare_files(file,file2,nomatch=0,i=0,f=1):
     count=0
     with open(file, 'r') as ip_file:
             for my_ip in ip_file:
@@ -28,18 +34,22 @@ def compare_files(file,file2,nomatch=0,f=1):
                     match=0
                     for my_network in network_file:
                         network=str(my_network.strip())
-                        toggle=compare_ip(ip,network,nomatch,f)
+                        toggle=compare_ip(ip,network,nomatch,i,f)
                         if toggle==1:
                             match=1
                             count+=1
                     if match==0 and nomatch==1:
                         print(f"No match for {ip}") 
-    print(f"\nTotal Matches: {count}\n")    
+    if i==1:
+        print("\n")
+    else:
+        print(f"\nTotal Matches: {count}\n")    
 
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--file", help="Use files as input", action="store_true")
     parser.add_argument("-n", "--nomatch", help="Show IP's that don't have a match", action="store_true")
+    parser.add_argument("-i", "--iponly", help="Print only a list of matching IP's/Networks", action="store_true")
     parser.add_argument("source", help="Enter an IP to compare or a file with IP's using the -f option")
     parser.add_argument("dest", help="Enter a network to compare to, or a file of networks using the -f option")
     return parser.parse_args()
@@ -47,9 +57,9 @@ def parse_args():
 def main():
     args=parse_args()
     if args.file:
-        compare_files(args.source,args.dest,args.nomatch)
+        compare_files(args.source,args.dest,args.nomatch,args.iponly)
     else:
-        compare_ip(args.source,args.dest,args.nomatch)
+        compare_ip(args.source,args.dest,args.nomatch,args.iponly)
 
 if __name__ == "__main__":
     main()
