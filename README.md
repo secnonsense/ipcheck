@@ -1,11 +1,15 @@
 # ipsubnetcheck
-Takes a list of IP's and a list of IP Subnets (IPv4) and checks to see if the IP's are in the subnets
+Checks to see if the source IP or network is a member of the second IP or network. Requires netaddr module 
 
-Requires netaddr module  
+Either an individual objects can be entered at the command line or files containing IP/network objects can be used (IPv4).
 
-Syntax -  
+Individual IP syntax:
 
-python3 ipsubcheck.py \<options\> \<source file\> \<dest file\>   
+python3 ipsubcheck.py [-n] \<source IP/network> \<dest IP/network\> 
+
+Files syntax -  
+
+python3 ipsubcheck.py [-n] -f \<source file\> \<dest file\>   
 
 Options:  
 "-f", "--file" - "Use files as input"  
