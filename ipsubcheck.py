@@ -2,13 +2,22 @@ from netaddr import IPNetwork, IPAddress
 import argparse
 
 def compare_ip(ip,network,nomatch=0,f=0):
-    if IPAddress(ip) in IPNetwork(network):
-        print(f"IP {ip} matches {network}")
-        toggle=1
-        if f==1:
-            return toggle
-    elif nomatch==1 and f==0:
-        print(f"No match for {ip}")
+    if "/" in ip:
+        if IPNetwork(ip) in IPNetwork(network):
+            print(f"IP {ip} matches {network}")
+            toggle=1
+            if f==1:
+                return toggle
+        elif nomatch==1 and f==0:
+            print(f"No match for {ip}")
+    else:
+        if IPAddress(ip) in IPNetwork(network):
+            print(f"IP {ip} matches {network}")
+            toggle=1
+            if f==1:
+                return toggle
+        elif nomatch==1 and f==0:
+            print(f"No match for {ip}")
 
 def compare_files(file,file2,nomatch=0,f=1):
     count=0
