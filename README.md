@@ -13,7 +13,7 @@ python3 ipsubcheck.py [-n] -f \<source file\> \<dest file\>
 
 Options:  
 "-f", "--file" - "Use files as input"  
-"-n", "--nomatch" - "Show IP's that don't have a match" 
+"-n", "--nomatch" - "Show IP's that don't have a match"    
 "-i", "--iponly" - "Only print out a list of matching IP's/networks"  
 
 "source" - Enter an IP to compare or a file with IP's using the -f option  
