@@ -1,15 +1,15 @@
-# ipsubnetcheck
+# ipcheck
 Checks to see if the source IP or network is a member of the second IP or network. Requires netaddr module 
 
 Either an individual objects can be entered at the command line or files containing IP/network objects can be used (IPv4). Networks should be entered in cidr notation (example - 1.1.1.0/24). 
 
 Individual IP syntax:
 
-python3 ipsubcheck.py [-n] \<source IP/network> \<dest IP/network\> 
+python3 ipcheck.py [-n] \<source IP/network> \<dest IP/network\> 
 
 Files syntax -  
 
-python3 ipsubcheck.py [-n] -f \<source file\> \<dest file\>   
+python3 ipcheck.py [-n] -f \<source file\> \<dest file\>   
 
 Options:  
 "-f", "--file" - "Use files as input"  
