@@ -1,7 +1,7 @@
 # ipsubnetcheck
 Checks to see if the source IP or network is a member of the second IP or network. Requires netaddr module 
 
-Either an individual objects can be entered at the command line or files containing IP/network objects can be used (IPv4).
+Either an individual objects can be entered at the command line or files containing IP/network objects can be used (IPv4). Networks should be entered in cidr notation (example - 1.1.1.0/24). 
 
 Individual IP syntax:
 
