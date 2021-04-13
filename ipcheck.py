@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 from netaddr import IPNetwork, IPAddress
 import argparse
 
