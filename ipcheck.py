@@ -63,7 +63,7 @@ def test_ip(value):
 def test_file(file):
     return os.path.isfile(file)
 
-def determine_output(sip,dip,sfile,dfile,args):
+def determine_input(sip,dip,sfile,dfile,args):
     if sip and dip:
         compare_ip(args.source,args.dest,args.nomatch,args.iponly)
     elif (dfile and sip) or (sfile and dfile):
@@ -78,7 +78,7 @@ def main():
     args=parse_args()
     sip,dip=test_ip(args.source),test_ip(args.dest)
     sfile,dfile=test_file(args.source),test_file(args.dest)
-    determine_output(sip,dip,sfile,dfile,args)
+    determine_input(sip,dip,sfile,dfile,args)
 
 if __name__ == "__main__":
     main()
